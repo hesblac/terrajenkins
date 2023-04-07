@@ -20,26 +20,27 @@ resource "aws_security_group" "instance_sg" {
   }
 }
 
-# Launch two EC2 instances using Amazon Linux 2 AMI
+# Launch two Ubuntu EC2 instances
 resource "aws_instance" "example_instance" {
   ami = "ami-0c55b159cbfafe1f0"
   instance_type = "t2.micro"
   count = 2
+  key_name = "mykey"
   security_groups = [aws_security_group.instance_sg.id]
 
   connection {
     type = "ssh"
-    user = "ec2-user"
+    user = "ubuntu"
     private_key = file("~/.ssh/id_rsa")
     host = self.public_ip
   }
 
   provisioner "remote-exec" {
     inline = [
-      "sudo yum update -y",
-      "sudo yum install -y httpd",
-      "sudo systemctl start httpd",
-      "sudo systemctl enable httpd",
+      "sudo apt-get update -y",
+      "sudo apt-get install -y apache2",
+      "sudo systemctl start apache2",
+      "sudo systemctl enable apache2",
       "echo 'Hello World from ${self.public_ip}' | sudo tee /var/www/html/index.html"
     ]
   }
