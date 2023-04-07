@@ -6,7 +6,6 @@ provider "aws" {
 # Create an S3 bucket
 resource "aws_s3_bucket" "somejigilaffin_bucket" {
   bucket = "example-bucket"
-  acl = "private"
 }
 
 # Create an EC2 security group to allow SSH access
