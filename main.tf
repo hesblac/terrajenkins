@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 # Create an S3 bucket
-resource "aws_s3_bucket" "example_bucket" {
+resource "aws_s3_bucket" "somejigilaffin_bucket" {
   bucket = "example-bucket"
   acl = "private"
 }
@@ -21,7 +21,7 @@ resource "aws_security_group" "instance_sg" {
 }
 
 # Launch two Ubuntu EC2 instances
-resource "aws_instance" "example_instance" {
+resource "aws_instance" "lafiaji_instance" {
   ami = "ami-0c55b159cbfafe1f0"
   instance_type = "t2.micro"
   count = 2
