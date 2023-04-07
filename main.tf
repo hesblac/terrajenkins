@@ -21,7 +21,7 @@ resource "aws_security_group" "instance_sg" {
 
 # Launch two Ubuntu EC2 instances
 resource "aws_instance" "lafiaji_instance" {
-  ami = "ami-0380cc6089074a2f9"
+  ami = "ami-0d361301d8f7067d5"
   instance_type = "t2.micro"
   count = 2
   key_name = "mykey"
