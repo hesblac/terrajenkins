@@ -5,7 +5,7 @@ provider "aws" {
 
 # Create an S3 bucket
 resource "aws_s3_bucket" "somejigilaffin_bucket" {
-  bucket = "example-bucket"
+  bucket = "frontier667-bucket"
 }
 
 # Create an EC2 security group to allow SSH access
