@@ -26,21 +26,4 @@ resource "aws_instance" "lafiaji_instance" {
   count = 2
   key_name = "mykey"
   security_groups = [aws_security_group.instance_sg.id]
-
-  connection {
-    type = "ssh"
-    user = "ubuntu"
-    private_key = "hesblac"
-    host = self.public_ip
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get update -y",
-      "sudo apt-get install -y apache2",
-      "sudo systemctl start apache2",
-      "sudo systemctl enable apache2",
-      "echo 'Hello World from ${self.public_ip}' | sudo tee /var/www/html/index.html"
-    ]
-  }
 }
